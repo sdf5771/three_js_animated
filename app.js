@@ -1,11 +1,13 @@
 'use strict'
 import * as THREE from 'three';
+import { OrbitControls } from '@three-ts/orbit-controls';
 import GLTFLoader from 'three-gltf-loader';
 
 class AnimateApp{
     constructor(){
-        const mainElement = document.querySelector('#mainApp');
-        this._mainElement = mainElement;
+        const renderContainer = document.querySelector('#WebGLContainer');
+        
+        this._renderContainer = renderContainer;
 
         const renderer = new THREE.webGLRenderer({
             antialias: true
@@ -48,7 +50,7 @@ class AnimateApp{
         })
     }
     _setupControls(){
-        
+        new OrbitControls(this._camera, this._renderContainer);
     }
 }
 function main(){
