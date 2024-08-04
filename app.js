@@ -28,20 +28,31 @@ class AnimateApp{
     }
 
     _setupCamera(){
+        const camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            100
+        );
 
+        camera.position.z = 2;
+        this._camera = camera;
     }
     _setupLight(){
 
     }
     _setupModel(){
-
+        new GLTFLoader().load('./assets/data-models/character_01_animate_model.gltf', (gltf) => {
+            const model = gltf.scene;
+            this._scene.add(model);
+        })
     }
     _setupControls(){
         
     }
 }
 function main(){
-    
+
 }
 
 main();
